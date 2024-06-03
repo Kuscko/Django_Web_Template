@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import DjangoWebTemplate.environment_template as env # Import the environment variables, replace with 'environment.py' after filling in the missing info
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hw%c4)@+$vt#^p31t81!%x+o#k(9a7ukx9#gj#n%7n=)ofg)6o'
+SECRET_KEY = env.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.ALLOWED_HOSTS
 
 
 # Application definition
@@ -37,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Add other installed apps here
+    # ...
+    # Add created apps here
+    'Portal',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Add other middleware here
+    'django_ratelimit.middleware.RatelimitMiddleware',
 ]
 
 ROOT_URLCONF = 'DjangoWebTemplate.urls'
@@ -77,6 +84,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'production': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.DATABASE_NAME,  # Name of your database
+        'USER': env.DATABASE_USER,  # Username for your database
+        'PASSWORD': env.DATABASE_PASSWORD,  # Password for your database
+        'HOST': env.DATABASE_HOST,  # Name of the service defined in docker-compose.yml
+        'PORT': env.DATABASE_PORT,  # Default port for PostgreSQL
     }
 }
 
@@ -121,3 +136,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Add custom settings here
+
+# Rate limit settings
+RATELIMIT_ENABLE = True # Enable rate limiting
+RATELIMIT_USE_CACHE = "default" # Use the default cache
+RATELIMIT_GLOBAL = None # No global rate limit
+RATELIMIT_BY_USER = True # Rate limit by user
+RATELIMIT_BY_IP = True # Rate limit by IP address
+RATELIMIT_BY_VIEW = True # Rate limit by view
+RATELIMIT_FAILURE = "429" # HTTP status code for rate limit failure
+RATELIMIT_SUCCESS = "200 OK" # HTTP status code for rate limit success
+RATELIMIT_RESET_ON_SUCCESS = True # Reset rate limit on success
