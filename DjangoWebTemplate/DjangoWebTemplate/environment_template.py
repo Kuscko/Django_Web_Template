@@ -1,10 +1,10 @@
 ########################################################################################
 # THIS FILE IS A TEMPLATE, DO NOT DIRECTLY MODIFY THIS FILE!!!                         #
-# DUPLICATE THIS FILE AND RENAME IT TO 'environment.py' THEN FILL IN THE MISSING INFO! #
+# DUPLICATE THIS FILE AND RENAME IT TO 'environment.py'                                #
 ########################################################################################
 
-# Generate a secret key
-# enter in console:
+# Generate a new secret key
+# Enter in console:
 
 # .\manage.py shell
 # from django.core.management.utils import get_random_secret_key
@@ -17,7 +17,8 @@ SECRET_KEY=''
 DEBUG=True
 
 # Allowed hosts
-ALLOWED_HOSTS=['']
+# DO NOT LEAVE '*' IN PRODUCTION
+ALLOWED_HOSTS=['*']
 
 # Database settings
 DATABASE_NAME='' # Name of your database
