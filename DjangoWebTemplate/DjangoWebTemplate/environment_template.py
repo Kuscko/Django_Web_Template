@@ -11,13 +11,13 @@
 # print(get_random_secret_key())
 
 # Secret key
-SECRET_KEY='r(o59$n)v&%4ut7h6n9odh#uff9gd@=es)9p7+re-h@xaf0z8b'
+SECRET_KEY=''
 
 # Debug mode
 DEBUG=True
 
 # Allowed hosts
-ALLOWED_HOSTS=['localhost', '127.0.0.1']
+ALLOWED_HOSTS=['']
 
 # Database settings
 DATABASE_NAME='' # Name of your database
