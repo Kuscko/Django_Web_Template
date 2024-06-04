@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # Add other installed apps here
     # ...
     # Add created apps here
-    'Portal',
+    'users',
 ]
 
 MIDDLEWARE = [

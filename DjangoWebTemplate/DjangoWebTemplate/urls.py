@@ -19,5 +19,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Portal.urls')), # Include the urls from the Portal app
+    path('', include('users.urls')), # Include the urls from the users app
 ]

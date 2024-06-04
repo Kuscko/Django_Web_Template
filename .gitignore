@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Created by Application
+*.sqlite3
+
 # User-specific files
 *.rsuser
 *.suo
