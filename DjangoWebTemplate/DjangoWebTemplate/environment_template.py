@@ -11,7 +11,7 @@
 # print(get_random_secret_key())
 
 # Secret key
-SECRET_KEY='gz9p!^s1#8_c@t7%9@p8+uz=tg*qdnpgo60zf5_p)#q4%r$(f_'
+SECRET_KEY=''
 
 # Debug mode
 DEBUG=True
